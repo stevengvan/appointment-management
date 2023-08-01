@@ -93,7 +93,6 @@
 }
 
 #notes-list {
-  width: 100%;
   overflow-y: auto;
   gap: 0.25rem;
 }
@@ -101,9 +100,8 @@
   background-color: rgb(233, 205, 127);
   padding: 0.5rem;
   border-radius: 0.5rem;
-  width: 100%;
   border: none;
-  word-wrap: break-word;
+  word-break: break-all;
   text-align: left;
 }
 .note-container > textarea {
@@ -163,11 +161,11 @@
 @media screen and (min-width: 40rem) and (min-width: 800px) and (min-height: 610px) {
   #appointment-container {
     height: auto;
+    width: 475px;
   }
 
   #container {
     height: 610px;
-    width: 475px;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
   }
