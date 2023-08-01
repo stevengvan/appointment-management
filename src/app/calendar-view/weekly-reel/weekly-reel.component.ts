@@ -30,9 +30,12 @@ export class WeeklyReelComponent {
           );
         });
 
-        let currDate = new Date();
-        const firstDayOfWeek = new Date(
-          currDate.setDate(this.today.getDate() - this.today.getDay())
+        let currDate = this.today;
+        let firstDayOfWeek = new Date(
+          currDate.setDate(currDate.getDate() - currDate.getDay())
+        );
+        let lastDayOfWeek = new Date(
+          currDate.setDate(currDate.getDate() - currDate.getDay() + 6)
         );
         for (let appointment of this.appointments) {
           appointment.time = format(
@@ -40,12 +43,7 @@ export class WeeklyReelComponent {
             'hh:mm a'
           );
           currDate = new Date(appointment.date.toString());
-          let dateDiff = currDate.getDate() - firstDayOfWeek.getDate();
-          if (
-            dateDiff >= 0 &&
-            dateDiff <= 6 &&
-            currDate.getMonth() === this.today.getMonth()
-          ) {
+          if (currDate > firstDayOfWeek && currDate < lastDayOfWeek) {
             this.appointmentsWeekly.push(appointment);
           }
         }
@@ -55,7 +53,6 @@ export class WeeklyReelComponent {
   constructor(private AppointmentsService: AppointmentsService) {}
 
   appointmentClicked(appointment: Appointment) {
-    console.log(this.today);
     showAppointment(appointment, this.container);
   }
 

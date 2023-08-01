@@ -27,7 +27,6 @@ export class AppointmentModalComponent {
       String(this.appointment?.customerID)
     ).subscribe((data: Customer) => {
       this.customer = { ...data };
-      console.log(this.customer);
     });
   }
 
