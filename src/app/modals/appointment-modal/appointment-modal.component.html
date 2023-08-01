@@ -1,0 +1,143 @@
+<div id="modal-background" class="d-flex justify-content-end align-items-center" (click)="close()">
+
+    <div id="appointment-container" style="gap:0" class="d-flex flex-column align-items-center">
+
+        <div (click)="$event.stopPropagation()">
+            <div *ngIf="!editAppointment" class="tab">{{appointment?.type}}</div>
+
+            <select *ngIf="editAppointment" name="appointment-type" id="appointment-type" class="tab">
+                <option value="Yoga" [selected]="appointment?.type === 'Yoga'">Yoga</option>
+                <option value="Cooking" [selected]="appointment?.type === 'Cooking'">Cooking</option>
+                <option value="Workout" [selected]="appointment?.type === 'Workout'">Workout</option>
+                <option value="Martial Arts" [selected]="appointment?.type === 'Martial Arts'">Martial Arts</option>
+            </select>
+
+        </div>
+
+        <div id="container" class="d-flex flex-column align-items-end" (click)="$event.stopPropagation()">
+
+            <mat-icon id="close-button" class="d-flex align-items-center justify-content-center"
+                (click)="close()">close</mat-icon>
+
+
+            <!----------------------------------------------------------------------------->
+            <!---------------------- Delete Appointment Confirmation ---------------------->
+            <!----------------------------------------------------------------------------->
+            <div style="height: 100%;"
+                class="delete-confirm d-flex flex-column align-items-center justify-content-center"
+                *ngIf="deleteAppointmentConfirm">
+                <p>Are you sure you want to delete this appointment?</p>
+
+                <div class="d-flex justify-content-center">
+                    <button (click)="deleteAppointment()">Confirm</button>
+                    <button (click)="deleteAppointmentConfirm = false">Cancel</button>
+                </div>
+            </div>
+
+
+            <div id="main-content" *ngIf="!deleteAppointmentConfirm">
+                <div id=" info-section" class="d-flex justify-content-between ">
+                    <img id="avatar" [src]="customer?.avatar" />
+
+                    <div>
+                        <!-------------------------------------------------------------->
+                        <!---------------------- Appointment Info ---------------------->
+                        <!-------------------------------------------------------------->
+                        <h1>{{customer?.name}}</h1>
+
+                        <div *ngIf="!editAppointment" style="margin-bottom: 1.5rem;" class="d-flex align-items-center">
+                            <h2 *ngIf="!editAppointment">{{appointment?.date}}</h2>
+                            <h3 *ngIf="!editAppointment" id="appointment-time">{{appointment?.time}}</h3>
+                        </div>
+
+                        <div id="edit-container" *ngIf="editAppointment" style="margin-bottom: 1.5rem;">
+                            <input id="appointment-date" type="date" [value]="date">
+                            <input id="appointment-time" type="time" [value]="time" />
+                        </div>
+
+
+                        <!------------------------------------------------------------------>
+                        <!---------------------- Appointment Controls ---------------------->
+                        <!------------------------------------------------------------------>
+                        <div id="appointment-buttons" class="d-flex align-items-center flex-wrap">
+                            <button *ngIf="!editAppointment" (click)="editAppointment=true">Edit appointment</button>
+                            <button *ngIf="!editAppointment" (click)="deleteAppointmentConfirm=true">Delete
+                                appointment</button>
+
+                            <button *ngIf="editAppointment" (click)="updateAppointment()">Update</button>
+                            <button *ngIf="editAppointment" (click)="editAppointment=false">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--------------------------------------------------------->
+                <!---------------------- Note Header ---------------------->
+                <!--------------------------------------------------------->
+                <div id="notes-header" class="d-flex justify-content-between align-items-center">
+                    <h2>Notes</h2>
+                    <button class="d-flex align-items-center" (click)="openCreateNote()">Add note <i
+                            class="material-icons">add</i></button>
+                </div>
+
+
+                <!------------------------------------------------------------->
+                <!---------------------- Create New Note ---------------------->
+                <!------------------------------------------------------------->
+                <div *ngIf="createNote && !editNote" style="margin-bottom: 1rem;">
+                    <textarea id="add-note" maxlength="250" placeholder="Type note here..."></textarea>
+
+                    <div id="add-note-buttons" class="d-flex justify-content-end align-items-center">
+                        <button (click)="addNote()">Submit</button>
+                        <button (click)="createNote=false">Cancel</button>
+                    </div>
+                </div>
+
+
+                <!------------------------------------------------------->
+                <!---------------------- Note List ---------------------->
+                <!------------------------------------------------------->
+                <div id="notes-list" class="d-flex flex-column">
+                    <div class="note-container" *ngFor="let note of appointment?.notes">
+                        <button id={{note.id}} *ngIf="!editNote || noteID !== note.id"
+                            (click)="openEditNote(note.text, note.id)">{{note.text}}</button>
+
+
+                        <!--------------------------------------------------------->
+                        <!---------------------- Note Editor ---------------------->
+                        <!--------------------------------------------------------->
+                        <textarea id={{note.id}}
+                            *ngIf="editNote && !createNote && !deleteNoteConfirm && noteID === note.id">{{note.text}}</textarea>
+
+
+                        <!---------------------------------------------------------------------->
+                        <!---------------------- Delete Note Confirmation ---------------------->
+                        <!---------------------------------------------------------------------->
+                        <div class="delete-confirm d-flex flex-column align-items-center"
+                            *ngIf="deleteNoteConfirm && noteID === note.id">
+                            <p>Are you sure you want to delete this note?</p>
+
+                            <div class="d-flex justify-content-center">
+                                <button (click)="deleteNote()">Confirm</button>
+                                <button (click)="deleteNoteConfirm = false">Cancel</button>
+                            </div>
+                        </div>
+
+
+                        <!----------------------------------------------------------------->
+                        <!---------------------- Note Editor Buttons ---------------------->
+                        <!----------------------------------------------------------------->
+                        <div *ngIf="!deleteNoteConfirm" class="note-edit-buttons d-flex justify-content-end">
+                            <button *ngIf="editNote && noteID === note.id" (click)="updateNote()">Update</button>
+                            <button *ngIf="editNote && noteID === note.id"
+                                (click)="deleteNoteConfirmation(note.id)">Delete</button>
+                            <button *ngIf="editNote && noteID === note.id"
+                                (click)="editNote = false; noteID =''">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

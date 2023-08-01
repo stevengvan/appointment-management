@@ -1,0 +1,182 @@
+#appointment-container {
+  height: 100%;
+}
+
+.tab {
+  background-color: #673ab7;
+  font-size: 17.5px;
+  width: 200px;
+  padding: 0.25rem 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transform: perspective(10px) rotateX(1deg);
+  color: white;
+  text-align: center;
+  cursor: default !important;
+}
+
+#appointment-type {
+  background-color: #a4b73a;
+}
+
+#container {
+  z-index: 100;
+  width: 100vw;
+  height: 100%;
+  padding: 1rem;
+  background-color: white;
+  cursor: default !important;
+  overflow: auto;
+}
+
+#avatar {
+  width: 150px;
+  border-radius: 0.5rem;
+  height: 184px;
+  object-fit: cover;
+}
+
+#edit-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#appointment-buttons > button {
+  color: white;
+  padding: 0.5rem;
+}
+
+#appointment-buttons > button:nth-child(1) {
+  background-color: rgb(0, 102, 255);
+}
+#appointment-buttons > button:nth-child(2) {
+  background-color: rgb(255, 60, 0);
+}
+#appointment-buttons > button:hover {
+  color: black;
+  background-color: lightgray;
+}
+
+#notes-header {
+  margin: 1rem 0;
+}
+#notes-header > button {
+  background-color: lightgray;
+  font-size: 15px;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+#notes-header > button:hover {
+  background-color: rgb(233, 205, 127);
+}
+
+#add-note {
+  background-color: rgb(238, 214, 147);
+  padding: 1rem;
+  height: 100px;
+  width: 100%;
+}
+
+#add-note-buttons > button {
+  background-color: lightgrey;
+  padding: 0.25rem 0.5rem;
+}
+#add-note-buttons > button:nth-child(1):hover {
+  background-color: #673ab7;
+  color: white;
+}
+#add-note-buttons > button:nth-child(2):hover {
+  background-color: gray;
+  color: white;
+}
+
+#notes-list {
+  width: 100%;
+  overflow-y: auto;
+  gap: 0.25rem;
+}
+.note-container > button {
+  background-color: rgb(233, 205, 127);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  border: none;
+  word-wrap: break-word;
+  text-align: left;
+}
+.note-container > textarea {
+  background-color: rgb(238, 214, 147);
+  padding: 1rem;
+  height: 100px;
+  width: 100%;
+}
+
+.note-edit-buttons {
+  margin-bottom: 1rem;
+}
+.note-edit-buttons > button {
+  background-color: lightgray;
+  padding: 0.25rem 0.5rem;
+}
+.note-edit-buttons > button:nth-child(1):hover {
+  background-color: #ffd740;
+}
+.note-edit-buttons > button:nth-child(2):hover {
+  color: white;
+  background-color: #f44336;
+}
+.note-edit-buttons > button:nth-child(3):hover {
+  background-color: gray;
+  color: white;
+}
+
+.delete-confirm {
+  width: 100%;
+  gap: 0;
+}
+.delete-confirm > div > button {
+  margin-bottom: 1.5rem;
+}
+.delete-confirm > div > button {
+  background-color: lightgray;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+.delete-confirm > div > button:nth-child(1):hover {
+  color: white;
+  background-color: #f44336;
+}
+.delete-confirm > div > button:nth-child(2):hover {
+  background-color: gray;
+  color: white;
+}
+@media screen and (min-width: 40rem) and (min-width: 800px) {
+  #container {
+    width: 475px;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+}
+@media screen and (min-width: 40rem) and (min-width: 800px) and (min-height: 610px) {
+  #appointment-container {
+    height: auto;
+  }
+
+  #container {
+    height: 610px;
+    width: 475px;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+  }
+
+  #edit-container {
+    flex-direction: row;
+  }
+
+  #notes-list {
+    max-height: 250px;
+  }
+}

@@ -1,0 +1,55 @@
+<div id="modal-background" class="d-flex justify-content-end align-items-center" (click)="close()">
+
+    <div id="day-container" class="d-flex flex-column" (click)="$event.stopPropagation()">
+        <mat-icon id="close-button" class="align-self-end" (click)="close()">close</mat-icon>
+
+        <div id="header">
+            <h1>{{date}}</h1>
+            <button (click)="!addAppointment?  addAppointment = true : addAppointment = false">{{!addAppointment?
+                'Add Appointment' : 'Cancel'}}</button>
+        </div>
+
+        <!------------------------------------------------------------------>
+        <!---------------------- Add Appointment Form ---------------------->
+        <!------------------------------------------------------------------>
+        <div id="add-appointment" *ngIf="addAppointment">
+            <input required id="time" type="time" placeholder="Time: eg. 6:00 AM">
+
+            <select required id="customer">
+                <option *ngFor="let customer of customers" [value]="[customer._id, customer.name]">
+                    {{customer.name}}
+                </option>
+            </select>
+
+            <select required id="type">
+                <option value="Yoga">Yoga</option>
+                <option value="Cooking">Cooking</option>
+                <option value="Workout">Workout</option>
+                <option value="Martial Arts">Martial Arts</option>
+            </select>
+        </div>
+
+        <!--------------------------------------------------------------------->
+        <!---------------------- Add Appointment Options ---------------------->
+        <!--------------------------------------------------------------------->
+        <div id="add-appointment-buttons">
+            <button id="submit" *ngIf="addAppointment" (click)="submitAppointment()">Submit</button>
+            <button id="cancel" *ngIf="addAppointment" (click)="addAppointment = false">Cancel</button>
+        </div>
+
+        <!------------------------------------------------------------------>
+        <!---------------------- List of Appointments ---------------------->
+        <!------------------------------------------------------------------>
+        <div id="main-content">
+            <table>
+                <tr class="appointment-container" *ngFor="let appointment of appointments"
+                    (click)="appointmentClicked(appointment)">
+                    <td>{{appointment.time}}</td>
+                    <td>{{appointment.customer}}</td>
+                    <td>{{appointment.type}}</td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+</div>

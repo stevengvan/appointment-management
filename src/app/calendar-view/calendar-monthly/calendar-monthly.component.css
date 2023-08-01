@@ -1,0 +1,9 @@
+#header {
+  flex-direction: column;
+}
+
+@media screen and (min-width: 40rem) {
+  #header {
+    flex-direction: row;
+  }
+}

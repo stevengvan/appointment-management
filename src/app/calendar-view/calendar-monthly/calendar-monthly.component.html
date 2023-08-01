@@ -1,0 +1,29 @@
+<!--------------------------------------------------------------->
+<!---------------------- Month Controllers ---------------------->
+<!--------------------------------------------------------------->
+<div id="header" class="d-flex justify-content-center align-items-center" style="margin-bottom: 1rem;">
+    <div id="buttons-container" class="d-flex">
+        <button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" mat-flat-button
+            color="accent">Prev</button>
+
+        <button mwlCalendarToday [(viewDate)]="viewDate" mat-flat-button color="primary">Today</button>
+
+        <button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" mat-flat-button color="accent">Next</button>
+    </div>
+
+    <h1 class=" flex-grow-1 m-0" style="color: grey; font-size: 2rem;">{{showDateHeader('month')}}</h1>
+</div>
+
+<!------------------------------------------------------>
+<!---------------------- Calendar ---------------------->
+<!------------------------------------------------------>
+<mwl-calendar-month-view [viewDate]="viewDate" [events]="appointmentPins" [refresh]="refresh"
+    (dayClicked)="dayClicked($event.day)"></mwl-calendar-month-view>
+
+<app-weekly-reel></app-weekly-reel>
+
+
+<!----------------------------------------------------------------->
+<!---------------------- Weekly Appointments ---------------------->
+<!----------------------------------------------------------------->
+<ng-container #container></ng-container>

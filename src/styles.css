@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 !important;
+}
+
+button {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+button:hover {
+  transition: 250ms;
+  cursor: pointer;
+}
+
+input {
+  font-size: 17.5px;
+  width: 100%;
+}
+
+.d-flex {
+  gap: 0.5rem;
+}
+
+#modal-background {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+}
+#modal-background {
+  cursor: pointer;
+}
+
+#close-button {
+  color: black;
+  border-radius: 2.5rem;
+  min-height: 30px;
+  max-height: 30px;
+  width: 30px;
+}
+#close-button:hover {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition-duration: 250ms;
+  cursor: pointer;
+}

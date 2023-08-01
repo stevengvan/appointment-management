@@ -1,0 +1,130 @@
+#day-container {
+  padding: 0.5rem;
+  background-color: white;
+  height: 100vh;
+  width: 100vw;
+  cursor: default;
+  overflow-y: auto;
+}
+
+#header {
+  width: 100%;
+}
+#header > *:first-child {
+  text-align: center;
+  font-weight: bold;
+}
+#header > button {
+  color: white;
+  background-color: #8fc728;
+  width: 100%;
+  padding: 0.5rem;
+}
+#header > button:hover {
+  background-color: grey;
+  transition-duration: 250ms;
+  cursor: pointer;
+}
+
+#add-appointment {
+  display: flex;
+  padding: 0.5rem;
+  text-align: center;
+  width: 100%;
+}
+#add-appointment > input {
+  color: white;
+  background-color: #673ab7;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-right: 1.5px solid white;
+  font-size: x-large;
+  flex: 2;
+}
+#add-appointment > *:not(input) {
+  color: black;
+  background-color: #dbb428;
+  font-size: large;
+  flex: 1;
+}
+#add-appointment > select:last-of-type {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+#add-appointment-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#main-content > table {
+  width: 100%;
+  border-spacing: 0 0.5rem;
+  border-collapse: separate;
+}
+
+.appointment-container > td {
+  padding: 0.5rem;
+  text-align: center;
+}
+.appointment-container:hover > td {
+  background-color: grey !important;
+  color: white !important;
+  cursor: pointer;
+  transition-duration: 250ms;
+}
+.appointment-container > td:first-child {
+  color: white;
+  background-color: #673ab7;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-right: 1.5px solid white;
+  font-size: x-large;
+  width: 20%;
+}
+.appointment-container > td:not(:first-child) {
+  color: black;
+  background-color: #dbb428;
+  font-size: large;
+}
+.appointment-container > td:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+#submit {
+  color: white;
+  background-color: rgb(0, 102, 255);
+  margin-right: 0.5rem;
+}
+#cancel {
+  color: white;
+  background-color: rgb(255, 60, 0);
+}
+#main-content > table > tr > td > button:hover {
+  color: black;
+  background-color: lightgray;
+  transition-duration: 250ms;
+}
+
+@media screen and (min-width: 40rem) and (min-width: 800px) {
+  #day-container {
+    width: 40%;
+    max-height: 500px;
+  }
+
+  #header {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+  }
+  #header > button {
+    width: auto;
+  }
+
+  #main-content {
+    overflow-y: auto;
+    max-height: 400px;
+  }
+}
